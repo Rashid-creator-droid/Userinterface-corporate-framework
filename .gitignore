@@ -9,7 +9,9 @@ test.log
 /.log/
 .log
 /.log
-
+/.Log/
+.Log
+/.Log
 # Environments
 .env
 .venv
