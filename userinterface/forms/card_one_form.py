@@ -17,7 +17,7 @@ class ContactUsTextField(enum.Enum):
 class CardOneForm(Form):
 
     def __init__(self):
-        super().__init__(Locator.by_xpath("//*[@class='game view']"), "Card two form")
+        super().__init__(Locator.by_xpath("//*[@class='game view']"), "Card one form")
 
         self.terms_checkbox = self._form_element.find_child_element(
             CheckBox,
