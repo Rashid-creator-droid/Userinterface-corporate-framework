@@ -12,6 +12,7 @@ test.log
 /.Log/
 .Log
 /.Log
+Log/log.log
 # Environments
 .env
 .venv
