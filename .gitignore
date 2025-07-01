@@ -6,6 +6,7 @@ test.log
 # .idea
 /.idea
 .idea
+/.log/
 
 # Environments
 .env
