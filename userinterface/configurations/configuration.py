@@ -10,4 +10,3 @@ class Configuration:
     @classmethod
     def api_url(cls):
         return Environment.current_environment().get("apiUrl")
-

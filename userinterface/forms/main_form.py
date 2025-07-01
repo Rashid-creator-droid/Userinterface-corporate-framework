@@ -21,4 +21,3 @@ class MainForm(Form):
             Locator.by_xpath("//*[@class='start__link']"),
             "Next page button"
         )
-

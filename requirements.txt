@@ -1,6 +1,5 @@
-pytest==8.4.1
-selenium==4.34.0
+pytest==7.4.4
+selenium==4.24.0
 py-selenium-auto==0.4.7
-
-allure-pytest~=2.13.5
-allure-python-commons~=2.13.5
+allure-pytest==2.13.5
+allure-python-commons==2.13.5
