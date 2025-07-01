@@ -5,7 +5,6 @@ from userinterface.configurations.configuration import Configuration
 
 class TestBase:
 
-    @staticmethod
-    def go_to_start_page():
+    def go_to_start_page(self):
         BrowserServices.Instance.browser.go_to(Configuration.start_url())
         BrowserServices.Instance.browser.wait_for_page_to_load()

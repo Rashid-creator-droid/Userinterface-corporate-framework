@@ -1,4 +1,4 @@
-from integration_template.configurations.environment import Environment
+from userinterface.configurations.environment import Environment
 
 
 class Configuration:
@@ -10,3 +10,4 @@ class Configuration:
     @classmethod
     def api_url(cls):
         return Environment.current_environment().get("apiUrl")
+
