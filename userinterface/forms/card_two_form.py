@@ -16,5 +16,7 @@ class ContactUsTextField(enum.Enum):
 
 class CardTwoForm(Form):
 
+    _card_two_unique_xpath = "//*[@class='avatar-and-interests__form']"
+
     def __init__(self):
-        super().__init__(Locator.by_xpath("//*[@class='avatar-and-interests__form']"), "Card two form")
+        super().__init__(Locator.by_xpath(self._card_two_unique_xpath), "Card two form")

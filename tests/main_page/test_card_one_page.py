@@ -9,7 +9,7 @@
 #
 # class TestMainForm(TestBase):
 #     main_form = MainForm()
-#     card_two_form = CardOneForm()
+#     card_one_form = CardOneForm()
 #
 #     def setup_method(self):
 #         with allure.step("Go to main page"):
@@ -22,11 +22,11 @@
 #     def test_catd_two_form(self):
 #         with allure.step("Go to next page"):
 #             self.main_form.next_page_button.click()
-#             assert self.card_two_form.state.is_displayed()
+#             assert self.card_one_form.state.is_displayed()
 #
 #
 #     def test_registration_form(self):
 #         with allure.step("Send: Password, Email and accept Terms"):
-#             self.card_two_form.terms_checkbox.check()
-#             # self.card_two_form.next_button.click()
+#             self.card_one_form.terms_checkbox.check()
+#             # self.card_one_form.next_button.click()
 #             time.sleep(5)
