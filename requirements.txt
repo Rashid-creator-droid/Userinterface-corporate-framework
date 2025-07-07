@@ -3,3 +3,4 @@ selenium==4.24.0
 py-selenium-auto==0.4.7
 allure-pytest==2.13.5
 allure-python-commons==2.13.5
+pydantic~=2.11.7

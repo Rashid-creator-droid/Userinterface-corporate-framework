@@ -1,19 +1,8 @@
-import enum
-from typing import List
-
 from py_selenium_auto.elements.button import Button
 from py_selenium_auto.elements.text_box import TextBox
 from py_selenium_auto.elements.check_box import CheckBox
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
-
-from utils.locator_formater import LocatorFormatter
-
-
-class ContactUsTextField(enum.Enum):
-    Password = "PROPERTY[NAME][0]"
-    Email = "PROPERTY[8][0]"
-    Domain = "PROPERTY[7][0]"
 
 
 class CardOneForm(Form):
@@ -23,9 +12,9 @@ class CardOneForm(Form):
     _email_box_xpath = "//input[@placeholder='Your email']"
     _password_box_xpath = "//input[@placeholder='Choose Password']"
     _domain_box_xpath = "//input[@placeholder='Domain']"
-    _next_button_xpath = "//a[text()='Next']"
-    _dropdown_opener_xpath = "//div[contains(@class, 'dropdown__opener')]"
-    _dropdown_options_xpath = "//div[contains(@class,'dropdown__list-item') and text()='{zone_text}']"
+    _next_button_xpath = "//*[text()='Next']"
+    _dropdown_opener_xpath = "//*[contains(@class, 'dropdown__opener')]"
+    _dropdown_options_xpath = "//*[contains(@class,'dropdown__list-item') and text()='{zone_text}']"
 
     def __init__(self):
         super().__init__(Locator.by_xpath(self._card_one_unique_xpath), "Card one form")
