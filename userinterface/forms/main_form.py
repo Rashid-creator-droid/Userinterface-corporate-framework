@@ -1,34 +1,25 @@
 from py_selenium_auto.browsers.browser_services import BrowserServices
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class MainForm(Form):
-
-    _main_form_unique_xpath = "//*[contains(@class, 'start') and contains(@class, 'view')]"
+    _main_form_unique_xpath = "//*[@class='game view']"
     _next_button_xpath = "//*[@class='start__link']"
     _help_button_xpath = "//*[contains(@class, 'help-form__send')]"
     _help_form_container_xpath = "//*[@class='help-form__container']"
-    _cookie_accept_xpath = "//*[contains(@class, 'button--transparent')]"
+    _cookie_button_accept_xpath = "//*[contains(@class, 'button--transparent')]"
+    _cookie_xpath = "//*[contains(@class, 'cookies')]"
+    _timer_xpath = "//*[contains(@class, 'timer')]"
 
     def __init__(self):
         super().__init__(Locator.by_xpath(self._main_form_unique_xpath), "Main form")
-
-
-    def click_next_page_button(self):
-        self._element_factory.get_button(
-            Locator.by_xpath(self._next_button_xpath),
-            "Next page button"
-        ).click()
-
 
     def close_help_window(self):
         self._element_factory.get_button(
             Locator.by_xpath(self._help_button_xpath),
             "Close help button"
         ).click()
-
 
     def wait_until_help_form_fully_collapsed(self):
         help_form_container = self._element_factory.get_combo_box(
@@ -46,3 +37,22 @@ class MainForm(Form):
             BrowserServices.Instance.service_provider.timeout_configuration().script,
         )
         return True
+
+    def accept_cookie_button_click(self):
+        self._element_factory.get_button(
+            Locator.by_xpath(self._cookie_button_accept_xpath),
+            "Accept cookie button"
+        ).click()
+
+    def is_cookie_banner_closed(self):
+        return self._element_factory._element_finder.find_element(
+            Locator.by_xpath(self._cookie_xpath)
+        )
+
+    def is_timer_started_from_zero(self, expected_value="00:00:00"):
+        timer_label = self._element_factory.get_label(
+            Locator.by_xpath(self._timer_xpath), "Timer"
+        )
+
+        timer_text = timer_label.get_text().strip()
+        return timer_text == expected_value

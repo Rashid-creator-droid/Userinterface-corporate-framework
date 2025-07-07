@@ -1,12 +1,11 @@
 from py_selenium_auto.elements.button import Button
-from py_selenium_auto.elements.text_box import TextBox
 from py_selenium_auto.elements.check_box import CheckBox
+from py_selenium_auto.elements.text_box import TextBox
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
 
 
 class CardOneForm(Form):
-
     _card_one_unique_xpath = "//*[@class='game view']"
     _terms_checkbox_xpath = "//*[@class='checkbox__label']"
     _email_box_xpath = "//input[@placeholder='Your email']"
@@ -18,8 +17,6 @@ class CardOneForm(Form):
 
     def __init__(self):
         super().__init__(Locator.by_xpath(self._card_one_unique_xpath), "Card one form")
-
-
 
     def terms_checkbox_chek(self):
         terms_checkbox = self._form_element.find_child_element(

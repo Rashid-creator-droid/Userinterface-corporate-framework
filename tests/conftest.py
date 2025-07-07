@@ -4,7 +4,6 @@ import os
 import pytest
 from _pytest.fixtures import FixtureRequest
 from py_selenium_auto.browsers.browser_services import BrowserServices
-
 from py_selenium_auto_core.logging.logger import Logger
 from py_selenium_auto_core.utilities.root_path_helper import RootPathHelper
 

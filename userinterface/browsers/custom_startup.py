@@ -9,10 +9,10 @@ class CustomStartup(BrowserStartup):
 
     @classmethod
     def configure_services(
-        cls,
-        application_provider: Callable,
-        settings: Optional[JsonSettingsFile] = None,
-        service_provider: BrowserServiceProvider = None,
+            cls,
+            application_provider: Callable,
+            settings: Optional[JsonSettingsFile] = None,
+            service_provider: BrowserServiceProvider = None,
     ) -> BrowserServiceProvider:
         settings = settings or cls.get_settings(
             RootPathHelper.calling_root_path(),

@@ -23,9 +23,11 @@
         }
       },
       "loggingPreferences": {
-          "Performance": "All"
+        "Performance": "All"
       },
-      "excludedArguments": [ "enable-automation" ],
+      "excludedArguments": [
+        "enable-automation"
+      ],
       "startArguments": [],
       "pageLoadStrategy": "normal"
     }
