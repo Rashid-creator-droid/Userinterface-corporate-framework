@@ -22,4 +22,4 @@ class TestHelpForm(TestBase):
             assert self.main_form.state.is_displayed(), "Main form page is not open"
 
         with allure.step("Close help winodw"):
-            assert self.main_form.is_timer_started_from_zero()
+            assert self.main_form.is_timer_started_from_zero(), "Help window is not closed"
