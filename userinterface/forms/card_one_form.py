@@ -19,43 +19,49 @@ class CardOneForm(Form):
     def __init__(self):
         super().__init__(Locator.by_xpath(self._card_one_unique_xpath), "Card one form")
 
-        self.terms_checkbox = self._form_element.find_child_element(
+
+
+    def terms_checkbox_chek(self):
+        terms_checkbox = self._form_element.find_child_element(
             CheckBox,
             Locator.by_xpath(self._terms_checkbox_xpath),
             "Terms and Conditions checkbox"
         )
+        terms_checkbox.check()
 
-    @property
-    def password_field(self) -> TextBox:
-        return self._form_element.find_child_element(
+    def input_password_field(self, text):
+        password_field = self._form_element.find_child_element(
             TextBox,
             Locator.by_xpath(self._password_box_xpath),
             "Password field"
         )
+        password_field.clear()
+        password_field.send_keys(text)
 
-    @property
-    def email_field(self) -> TextBox:
-        return self._form_element.find_child_element(
+    def input_email_field(self, text):
+        email_field = self._form_element.find_child_element(
             TextBox,
             Locator.by_xpath(self._email_box_xpath),
             "Email field"
         )
+        email_field.clear()
+        email_field.send_keys(text)
 
-    @property
-    def domain_field(self) -> TextBox:
-        return self._form_element.find_child_element(
+    def input_domain_field(self, text):
+        domain_field = self._form_element.find_child_element(
             TextBox,
             Locator.by_xpath(self._domain_box_xpath),
             "Domain field"
         )
+        domain_field.clear()
+        domain_field.send_keys(text)
 
-    @property
-    def next_button(self) -> Button:
-        return self._form_element.find_child_element(
+    def next_button_click(self):
+        self._form_element.find_child_element(
             Button,
             Locator.by_xpath(self._next_button_xpath),
             "Next button"
-        )
+        ).click()
 
     def select_domain_zone(self, zone_text: str):
         dropdown_opener = self._form_element.find_child_element(
