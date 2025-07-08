@@ -10,6 +10,6 @@ class UserFields(BaseModel):
     domain_zone: str
 
 
-class TestData(BaseModel):
+class DataTest(BaseModel):
     interest_selection_count: int
     timer_start: time

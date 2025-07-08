@@ -1,7 +1,8 @@
 import allure
 
 from tests.test_base import TestBase
-from userinterface.configurations.test_data_loader import TestDataLoader
+from userinterface.configurations.schemas import DataTest
+from userinterface.configurations.test_data_loader import DataLoader
 from userinterface.forms.main_form import MainForm
 from userinterface.forms.start_page import StartPage
 
@@ -9,7 +10,6 @@ from userinterface.forms.start_page import StartPage
 class TestHelpForm(TestBase):
     main_form = MainForm()
     start_page = StartPage()
-    test_data = TestDataLoader.get_test_data()
 
     def setup_method(self):
         with allure.step("Go to start page"):
@@ -17,6 +17,9 @@ class TestHelpForm(TestBase):
 
         with allure.step("Verify the start page is displayed"):
             assert self.start_page.state.is_displayed(), "Start page is not visible"
+
+        with allure.step("Load test and user data"):
+            self.test_data: DataTest = DataLoader.get_test_data()
 
     def test_timer_start(self):
         with allure.step("Navigate to main form"):

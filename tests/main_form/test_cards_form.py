@@ -1,8 +1,8 @@
 import allure
 
 from tests.test_base import TestBase
-from userinterface.configurations.schemas import UserFields
-from userinterface.configurations.test_data_loader import TestDataLoader
+from userinterface.configurations.schemas import UserFields, DataTest
+from userinterface.configurations.test_data_loader import DataLoader
 from userinterface.configurations.user_data_loader import UserDataLoader, AvatarLoader
 from userinterface.forms.email_password_card import CardOneForm
 from userinterface.forms.interests_avatar_card import CardTwoForm
@@ -17,7 +17,7 @@ class TestCardsForm(TestBase):
     card_two_form = CardTwoForm()
     card_three_form = CardThreeForm()
     start_page = StartPage()
-    test_data = TestDataLoader.get_test_data()
+
 
     def setup_method(self):
         with allure.step("Go to start page"):
@@ -26,8 +26,9 @@ class TestCardsForm(TestBase):
         with allure.step("Start page is displayed"):
             assert self.start_page.state.is_displayed(), "Start page is displayed"
 
-        with allure.step("Load test data"):
+        with allure.step("Load test and user data"):
             self.user_data: UserFields = UserDataLoader.get_user_data()
+            self.test_data: DataTest = DataLoader.get_test_data()
 
     def test_card_form(self):
         with allure.step("Go to next page"):

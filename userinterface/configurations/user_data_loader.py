@@ -14,7 +14,7 @@ class UserDataLoader:
     def get_user_data() -> UserFields:
         env_name = BrowserServices.Instance.service_provider.settings_file().get("environment")
 
-        user_data_sub_path = Path("environment", env_name, "user_data.json")
+        user_data_sub_path = str(Path("environment", env_name, "user_data.json"))
         user_data_file = JsonSettingsFile(
             str(user_data_sub_path),
             RootPathHelper.current_root_path(__file__),
