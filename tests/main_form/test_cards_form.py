@@ -1,3 +1,5 @@
+import time
+
 import allure
 
 from tests.test_base import TestBase
@@ -50,7 +52,7 @@ class TestCardsForm(TestBase):
 
             avatar_path = AvatarLoader.get_avatar_absolute_path()
             self.card_two_form.upload_avatar_image(avatar_path)
+            assert self.card_two_form.avatar_is_uploaded(), "Avatar is not upload"
 
-        with allure.step("Go to Next"):
             self.card_one_form.next_button_click()
             assert self.card_three_form.state.is_displayed(), "Three card is not open"
