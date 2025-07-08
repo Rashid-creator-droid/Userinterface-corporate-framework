@@ -5,8 +5,8 @@ from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
 
 
-class CardOneForm(Form):
-    _card_one_unique_xpath = "//*[@class='game view']"
+class EmailPasswordForm(Form):
+    _email_pass_form_unique_xpath = "//*[@class='game view']"
     _terms_checkbox_xpath = "//*[@class='checkbox__label']"
     _email_box_xpath = "//input[@placeholder='Your email']"
     _password_box_xpath = "//input[@placeholder='Choose Password']"
@@ -16,7 +16,7 @@ class CardOneForm(Form):
     _dropdown_options_xpath = "//*[contains(@class,'dropdown__list-item') and text()='{zone_text}']"
 
     def __init__(self):
-        super().__init__(Locator.by_xpath(self._card_one_unique_xpath), "Card one form")
+        super().__init__(Locator.by_xpath(self._email_pass_form_unique_xpath), "Card one form")
 
     def terms_checkbox_chek(self):
         terms_checkbox = self._form_element.find_child_element(

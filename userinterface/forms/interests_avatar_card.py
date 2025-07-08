@@ -9,8 +9,8 @@ from py_selenium_auto_core.locator.locator import Locator
 from userinterface.utils.file_upload_utils import FileUploadDialogHandler
 
 
-class CardTwoForm(Form):
-    _card_two_unique_xpath = "//*[@class='avatar-and-interests__form']"
+class InterestsAvatarForm(Form):
+    _interests_avatar_form_unique_xpath = "//*[@class='avatar-and-interests__form']"
     _unselect_all_xpath = "//*[@for='interest_unselectall']"
     _all_interests_xpath = "//*[starts-with(@for, 'interest_') and not(contains(@for, 'selectall'))]"
     _next_button_xpath = "//*[text()='Next']"
@@ -19,7 +19,7 @@ class CardTwoForm(Form):
     _avatar_image_xpath = "//*[@class='avatar-and-interests__avatar-image']"
 
     def __init__(self):
-        super().__init__(Locator.by_xpath(self._card_two_unique_xpath), "Card two form")
+        super().__init__(Locator.by_xpath(self._interests_avatar_form_unique_xpath), "Card two form")
 
     def uncheck_unselect_all(self):
         unselect_all = self._form_element.find_child_element(

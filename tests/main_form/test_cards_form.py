@@ -4,18 +4,18 @@ from tests.test_base import TestBase
 from userinterface.configurations.schemas import UserFields, DataTest
 from userinterface.configurations.test_data_loader import DataLoader
 from userinterface.configurations.user_data_loader import UserDataLoader, AvatarLoader
-from userinterface.forms.email_password_card import CardOneForm
-from userinterface.forms.interests_avatar_card import CardTwoForm
+from userinterface.forms.email_password_card import EmailPasswordForm
+from userinterface.forms.interests_avatar_card import InterestsAvatarForm
 from userinterface.forms.main_form import MainForm
-from userinterface.forms.more_info_card import CardThreeForm
+from userinterface.forms.more_info_card import MoreInfoForm
 from userinterface.forms.start_page import StartPage
 
 
 class TestCardsForm(TestBase):
     main_form = MainForm()
-    card_one_form = CardOneForm()
-    card_two_form = CardTwoForm()
-    card_three_form = CardThreeForm()
+    card_one_form = EmailPasswordForm()
+    card_two_form = InterestsAvatarForm()
+    card_three_form = MoreInfoForm()
     start_page = StartPage()
 
     def setup_method(self):
