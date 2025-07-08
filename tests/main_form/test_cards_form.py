@@ -18,13 +18,12 @@ class TestCardsForm(TestBase):
     card_three_form = CardThreeForm()
     start_page = StartPage()
 
-
     def setup_method(self):
-        with allure.step("Go to start page"):
+        with allure.step("Open the start page"):
             self.go_to_start_page()
 
-        with allure.step("Start page is displayed"):
-            assert self.start_page.state.is_displayed(), "Start page is displayed"
+        with allure.step("Verify the start page is displayed"):
+            assert self.start_page.state.is_displayed(), "The start page is not visible"
 
         with allure.step("Load test and user data"):
             self.user_data: UserFields = UserDataLoader.get_user_data()
@@ -35,7 +34,7 @@ class TestCardsForm(TestBase):
             self.start_page.click_next_page_button()
             assert self.card_one_form.state.is_displayed(), "Main form page is not open"
 
-        with allure.step("Registration form"):
+        with allure.step("Filling out the registration form"):
             self.card_one_form.input_password_field(self.user_data.password)
             self.card_one_form.input_email_field(self.user_data.email)
             self.card_one_form.input_domain_field(self.user_data.domain)
@@ -43,11 +42,11 @@ class TestCardsForm(TestBase):
 
             self.card_one_form.terms_checkbox_chek()
 
-        with allure.step("Go to Next"):
+        with allure.step("Navigate to the Next page"):
             self.card_one_form.next_button_click()
             assert self.card_two_form.state.wait_for_displayed(), "Interest and avatar card is not open"
 
-        with allure.step("Interests form and avatar"):
+        with allure.step("Selecting interests for registration and uploading an avatar"):
             self.card_two_form.uncheck_unselect_all()
             self.card_two_form.select_two_random_interests(self.test_data.interest_selection_count)
 

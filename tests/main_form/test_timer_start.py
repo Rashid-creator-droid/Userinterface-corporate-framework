@@ -16,7 +16,7 @@ class TestHelpForm(TestBase):
             self.go_to_start_page()
 
         with allure.step("Verify the start page is displayed"):
-            assert self.start_page.state.is_displayed(), "Start page is not visible"
+            assert self.start_page.state.is_displayed(), "The start page is not visible"
 
         with allure.step("Load test and user data"):
             self.test_data: DataTest = DataLoader.get_test_data()

@@ -14,7 +14,7 @@ class TestCookieWindow(TestBase):
             self.go_to_start_page()
 
         with allure.step("Verify the start page is displayed"):
-            assert self.start_page.state.is_displayed(), "Start page should be visible, but it is not"
+            assert self.start_page.state.is_displayed(), "The start page is not visible"
 
     def test_cookie_window(self):
         with allure.step("Navigate to the main form"):
@@ -23,4 +23,4 @@ class TestCookieWindow(TestBase):
 
         with allure.step("Accept cookies and verify the banner is hidden"):
             self.main_form.accept_cookie_button_click()
-            assert self.main_form.is_cookie_banner_closed(), "Cookie banner should be hidden after acceptance, but it is still displayed"
+            assert self.main_form.is_cookie_banner_closed(), "Cookie banner not to be hidden"

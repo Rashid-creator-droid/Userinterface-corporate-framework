@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 from py_selenium_auto.browsers.browser_services import BrowserServices
