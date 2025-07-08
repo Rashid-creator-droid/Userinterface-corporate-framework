@@ -14,7 +14,7 @@ class UserDataLoader:
     def get_user_data() -> UserFields:
         env_name = BrowserServices.Instance.service_provider.settings_file().get("environment")
 
-        user_data_sub_path = str(Path("environment", env_name, "user_data.json"))
+        user_data_sub_path = Path("environment", env_name, "user_data.json")
         user_data_file = JsonSettingsFile(
             str(user_data_sub_path),
             RootPathHelper.current_root_path(__file__),
@@ -29,7 +29,7 @@ class AvatarLoader:
 
     @staticmethod
     def get_avatar_absolute_path(filename: str = "avatar.png") -> str:
-        relative_path = str(Path("userinterface", "resources", filename))
+        relative_path = str(Path("resources", filename))
         absolute_path = os.path.abspath(
             os.path.join(RootPathHelper.current_root_path(__file__), relative_path)
         )
