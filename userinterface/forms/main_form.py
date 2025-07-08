@@ -1,3 +1,5 @@
+import datetime
+
 from py_selenium_auto.browsers.browser_services import BrowserServices
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
@@ -30,7 +32,7 @@ class MainForm(Form):
             lambda: help_form_container.js_actions.execute_script(
                 """
                 const height = parseFloat(window.getComputedStyle(arguments[0]).height);
-                return height <= 50;
+                return height <= 10;
                 """,
                 help_form_container.get_element()
             ),
@@ -46,13 +48,16 @@ class MainForm(Form):
 
     def is_cookie_banner_closed(self):
         return self._element_factory._element_finder.find_element(
-            Locator.by_xpath(self._cookie_xpath)
+            Locator.by_xpath(self._cookie_xpath),
+            name="Cookie window",
+            timeout=BrowserServices.Instance.service_provider.timeout_configuration().condition
         )
 
-    def is_timer_started_from_zero(self, expected_value="00:00:00"):
+    def get_timer_started_from(self):
         timer_label = self._element_factory.get_label(
             Locator.by_xpath(self._timer_xpath), "Timer"
         )
 
         timer_text = timer_label.get_text().strip()
-        return timer_text == expected_value
+        actual_time = datetime.datetime.strptime(timer_text, "%H:%M:%S").time()
+        return actual_time

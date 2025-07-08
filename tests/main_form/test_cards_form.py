@@ -1,14 +1,13 @@
-import time
-
 import allure
 
 from tests.test_base import TestBase
 from userinterface.configurations.schemas import UserFields
+from userinterface.configurations.test_data_loader import TestDataLoader
 from userinterface.configurations.user_data_loader import UserDataLoader, AvatarLoader
-from userinterface.forms.card_one_form import CardOneForm
-from userinterface.forms.card_two_form import CardTwoForm
-from userinterface.forms.catd_three_form import CardThreeForm
+from userinterface.forms.email_password_card import CardOneForm
+from userinterface.forms.interests_avatar_card import CardTwoForm
 from userinterface.forms.main_form import MainForm
+from userinterface.forms.more_info_card import CardThreeForm
 from userinterface.forms.start_page import StartPage
 
 
@@ -18,6 +17,7 @@ class TestCardsForm(TestBase):
     card_two_form = CardTwoForm()
     card_three_form = CardThreeForm()
     start_page = StartPage()
+    test_data = TestDataLoader.get_test_data()
 
     def setup_method(self):
         with allure.step("Go to start page"):
@@ -44,15 +44,15 @@ class TestCardsForm(TestBase):
 
         with allure.step("Go to Next"):
             self.card_one_form.next_button_click()
-            assert self.card_two_form.state.wait_for_displayed(), "Two card is not open"
+            assert self.card_two_form.state.wait_for_displayed(), "Interest and avatar card is not open"
 
         with allure.step("Interests form and avatar"):
             self.card_two_form.uncheck_unselect_all()
-            self.card_two_form.select_two_random_interests()
+            self.card_two_form.select_two_random_interests(self.test_data.interest_selection_count)
 
             avatar_path = AvatarLoader.get_avatar_absolute_path()
             self.card_two_form.upload_avatar_image(avatar_path)
             assert self.card_two_form.avatar_is_uploaded(), "Avatar is not upload"
 
             self.card_one_form.next_button_click()
-            assert self.card_three_form.state.is_displayed(), "Three card is not open"
+            assert self.card_three_form.state.is_displayed(), "More info card is not open"

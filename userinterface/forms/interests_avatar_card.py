@@ -1,14 +1,12 @@
 import random
-import time
 
+from py_selenium_auto.browsers.browser_services import BrowserServices
 from py_selenium_auto.elements.button import Button
 from py_selenium_auto.elements.check_box import CheckBox
-from py_selenium_auto.elements.text_box import TextBox
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
-from pywinauto.application import Application
-from pywinauto.findwindows import find_windows
-from py_selenium_auto.browsers.browser_services import BrowserServices
+
+from userinterface.utils.file_upload_utils import FileUploadDialogHandler
 
 
 class CardTwoForm(Form):
@@ -31,13 +29,13 @@ class CardTwoForm(Form):
         )
         unselect_all.click()
 
-    def select_two_random_interests(self):
+    def select_two_random_interests(self, selection_count):
         all_interest_elements = self._form_element.find_child_elements(
             CheckBox,
             Locator.by_xpath(self._all_interests_xpath),
             "All interests checkboxes"
         )
-        random_interests = random.sample(all_interest_elements, 3)
+        random_interests = random.sample(all_interest_elements, selection_count)
         for interest in random_interests:
             if not interest.is_checked():
                 interest.check()
@@ -50,21 +48,12 @@ class CardTwoForm(Form):
         )
         upload_button.click()
 
-        app = Application(backend="win32").connect(title='Открытие', timeout=5)
-        dialog = app.window(title='Открытие')
-        dialog['Edit'].set_edit_text(file_path)
-        dialog['Открыть'].wait('ready', timeout=5)
-        dialog['Открыть'].click_input()
-        dialog.wait_not('visible', timeout=5)
+        file_dialog = FileUploadDialogHandler()
+        file_dialog.upload_file(file_path)
 
     def avatar_is_uploaded(self):
-
-        if self._form_element.find_child_element(
-            TextBox,
+        return self._element_factory._element_finder.find_element(
             Locator.by_xpath(self._avatar_image_xpath),
-            "Avatar image block"
-        ):
-            return True
-        return False
-
-
+            name="Avatar image",
+            timeout=BrowserServices.Instance.service_provider.timeout_configuration().condition
+        )
