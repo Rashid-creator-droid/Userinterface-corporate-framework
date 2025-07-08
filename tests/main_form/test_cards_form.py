@@ -13,9 +13,9 @@ from userinterface.forms.start_page import StartPage
 
 class TestCardsForm(TestBase):
     main_form = MainForm()
-    card_one_form = EmailPasswordForm()
-    card_two_form = InterestsAvatarForm()
-    card_three_form = MoreInfoForm()
+    email_password_form = EmailPasswordForm()
+    avatar_interests_form = InterestsAvatarForm()
+    more_info_form = MoreInfoForm()
     start_page = StartPage()
 
     def setup_method(self):
@@ -32,27 +32,27 @@ class TestCardsForm(TestBase):
     def test_card_form(self):
         with allure.step("Go to next page"):
             self.start_page.click_next_page_button()
-            assert self.card_one_form.state.is_displayed(), "Main form page is not open"
+            assert self.email_password_form.state.is_displayed(), "Main form page is not open"
 
         with allure.step("Filling out the registration form"):
-            self.card_one_form.input_password_field(self.user_data.password)
-            self.card_one_form.input_email_field(self.user_data.email)
-            self.card_one_form.input_domain_field(self.user_data.domain)
-            self.card_one_form.select_domain_zone(self.user_data.domain_zone)
+            self.email_password_form.input_password_field(self.user_data.password)
+            self.email_password_form.input_email_field(self.user_data.email)
+            self.email_password_form.input_domain_field(self.user_data.domain)
+            self.email_password_form.select_domain_zone(self.user_data.domain_zone)
 
-            self.card_one_form.terms_checkbox_chek()
+            self.email_password_form.terms_checkbox_chek()
 
         with allure.step("Navigate to the Next page"):
-            self.card_one_form.next_button_click()
-            assert self.card_two_form.state.wait_for_displayed(), "Interest and avatar card is not open"
+            self.email_password_form.next_button_click()
+            assert self.avatar_interests_form.state.wait_for_displayed(), "Interest and avatar card is not open"
 
         with allure.step("Selecting interests for registration and uploading an avatar"):
-            self.card_two_form.uncheck_unselect_all()
-            self.card_two_form.select_two_random_interests(self.test_data.interest_selection_count)
+            self.avatar_interests_form.uncheck_unselect_all()
+            self.avatar_interests_form.select_two_random_interests(self.test_data.interest_selection_count)
 
             avatar_path = AvatarLoader.get_avatar_absolute_path()
-            self.card_two_form.upload_avatar_image(avatar_path)
-            assert self.card_two_form.avatar_is_uploaded(), "Avatar is not upload"
+            self.avatar_interests_form.upload_avatar_image(avatar_path)
+            assert self.avatar_interests_form.avatar_is_uploaded(), "Avatar is not upload"
 
-            self.card_one_form.next_button_click()
-            assert self.card_three_form.state.is_displayed(), "More info card is not open"
+            self.email_password_form.next_button_click()
+            assert self.more_info_form.state.is_displayed(), "More info card is not open"
