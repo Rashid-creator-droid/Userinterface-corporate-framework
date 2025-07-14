@@ -28,7 +28,10 @@
       "excludedArguments": [
         "enable-automation"
       ],
-      "startArguments": [],
+      "startArguments": [
+        "--ignore-certificate-errors",
+        "--allow-insecure-localhost"
+      ],
       "pageLoadStrategy": "eager"
     }
   },
