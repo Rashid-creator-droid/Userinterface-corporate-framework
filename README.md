@@ -1,8 +1,8 @@
-# Userinterface Testing
+# Userinyerface Testing
 
 ## Description
 
-### This project is designed for automated testing of key Userinterface pages:
+### This project is designed for automated testing of key Userinyerface pages:
 
 - Cards
 - Help form
