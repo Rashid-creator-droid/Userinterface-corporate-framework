@@ -1,6 +1,7 @@
-from faker import Faker
 import random
 import string
+
+from faker import Faker
 
 from userinyerface.models.schemas import UserFields
 
@@ -10,7 +11,6 @@ class FakeUserFactory:
 
     @classmethod
     def _generate_valid_password(cls, email, length: int = 12):
-
         latin_letters = string.ascii_letters
         digits = string.digits
         special_chars = string.punctuation

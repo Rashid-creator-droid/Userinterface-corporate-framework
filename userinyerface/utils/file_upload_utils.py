@@ -1,12 +1,12 @@
 import ctypes
 import locale
-from pathlib import Path
 import os
+from pathlib import Path
 
 import allure
 from py_selenium_auto.browsers.browser_services import BrowserServices
-from pywinauto.application import Application
 from py_selenium_auto_core.utilities.root_path_helper import RootPathHelper
+from pywinauto.application import Application
 
 from userinyerface.configurations.test_data_loader import DataLoader
 
