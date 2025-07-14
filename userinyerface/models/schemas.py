@@ -21,3 +21,4 @@ class DataTest(BaseModel):
     interest_selection_count: int
     timer_start: time
     os_language: Dict[str, LanguageDialogConfig]
+

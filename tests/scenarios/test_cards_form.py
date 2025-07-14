@@ -5,6 +5,7 @@ from userinyerface.configurations.user_data_loader import AvatarLoader
 from userinyerface.forms.email_password_card import EmailPasswordForm
 from userinyerface.forms.interests_avatar_card import InterestsAvatarForm
 from userinyerface.forms.more_info_card import MoreInfoForm
+from userinyerface.utils.faker_factory import FakeUserFactory
 
 
 class TestCardsForm(TestBase):
@@ -12,7 +13,7 @@ class TestCardsForm(TestBase):
     def test_card_form(self):
         with allure.step("Start registration and load data"):
             test_data = self.prepare_test_data()
-            user_data = self.prepare_user_data()
+            user_data = FakeUserFactory.create()
             self.open_main_form_from_start()
             email_form = EmailPasswordForm()
 

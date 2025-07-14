@@ -5,3 +5,4 @@ allure-pytest==2.13.5
 allure-python-commons==2.13.5
 pydantic~=2.11.7
 pywinauto~=0.6.9
+Faker~=37.4.0
