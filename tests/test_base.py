@@ -2,7 +2,7 @@ import allure
 from py_selenium_auto.browsers.browser_services import BrowserServices
 
 from userinyerface.configurations.configuration import Configuration
-from userinyerface.configurations.schemas import DataTest, UserFields
+from models.schemas import DataTest, UserFields
 from userinyerface.configurations.test_data_loader import DataLoader
 from userinyerface.configurations.user_data_loader import UserDataLoader
 from userinyerface.forms.main_form import MainForm
