@@ -9,7 +9,7 @@ class FakeUserFactory:
     _faker = Faker()
 
     @classmethod
-    def _generate_valid_password(cls, email: str, length: int = 12) -> str:
+    def _generate_valid_password(cls, email, length: int = 12):
 
         latin_letters = string.ascii_letters
         digits = string.digits
@@ -34,13 +34,14 @@ class FakeUserFactory:
 
     @classmethod
     def create(cls) -> UserFields:
-        email = cls._faker.email()
-        domain = email.split("@")[1].split(".")[0]
-        domain_zone = random.choice(["com", "net", "org", "de"])
-        password = cls._generate_valid_password(email)
+        full_email = cls._faker.email()
+        username = full_email.split("@")[0]
+        domain = full_email.split("@")[1].split(".")[0]
+        domain_zone = random.choice([".com", ".net", ".org", ".de"])
+        password = cls._generate_valid_password(full_email)
 
         return UserFields(
-            email=email,
+            email=username,
             password=password,
             domain=domain,
             domain_zone=domain_zone

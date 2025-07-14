@@ -40,7 +40,7 @@ class InterestsAvatarForm(Form):
             if not interest.is_checked():
                 interest.check()
 
-    def upload_avatar_image(self, file_path):
+    def upload_avatar_image(self, filename):
         upload_button = self._form_element.find_child_element(
             Button,
             Locator.by_xpath(self._file_input_button_xpath),
@@ -49,7 +49,7 @@ class InterestsAvatarForm(Form):
         upload_button.click()
 
         file_dialog = FileUploadDialogHandler()
-        file_dialog.upload_file(file_path)
+        file_dialog.upload_file(filename)
 
     def avatar_is_uploaded(self):
         return self._element_factory._element_finder.find_element(

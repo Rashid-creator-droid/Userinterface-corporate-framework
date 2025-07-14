@@ -1,11 +1,17 @@
 {
   "interest_selection_count": 3,
   "timer_start": "00:00:00",
+  "avatar_name": "avatar.png",
   "os_language": {
     "ru": {
       "dialog_title": "Открытие",
       "edit": "Edit",
       "open_button": "Открыть"
+    },
+    "en": {
+      "dialog_title": "Open",
+      "edit": "Edit",
+      "open_button": "Open"
     }
   }
 }

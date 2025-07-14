@@ -3,10 +3,9 @@ from py_selenium_auto.browsers.browser_services import BrowserServices
 
 from userinyerface.configurations.configuration import Configuration
 from userinyerface.configurations.test_data_loader import DataLoader
-from userinyerface.configurations.user_data_loader import UserDataLoader
 from userinyerface.forms.main_form import MainForm
 from userinyerface.forms.start_page import StartPage
-from userinyerface.models.schemas import DataTest, UserFields
+from userinyerface.models.schemas import DataTest
 
 
 class TestBase:
@@ -32,9 +31,3 @@ class TestBase:
         with allure.step("Load test data"):
             test_data: DataTest = DataLoader.get_test_data()
             return test_data
-
-    @staticmethod
-    def prepare_user_data():
-        with allure.step("Load user data"):
-            user_data: UserFields = UserDataLoader.get_user_data()
-            return user_data

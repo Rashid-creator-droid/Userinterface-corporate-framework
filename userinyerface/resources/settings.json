@@ -29,7 +29,7 @@
         "enable-automation"
       ],
       "startArguments": [],
-      "pageLoadStrategy": "normal"
+      "pageLoadStrategy": "eager"
     }
   },
   "timeouts": {

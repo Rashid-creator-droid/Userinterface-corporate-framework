@@ -1,7 +1,6 @@
 import allure
 
 from tests.test_base import TestBase
-from userinyerface.configurations.user_data_loader import AvatarLoader
 from userinyerface.forms.email_password_card import EmailPasswordForm
 from userinyerface.forms.interests_avatar_card import InterestsAvatarForm
 from userinyerface.forms.more_info_card import MoreInfoForm
@@ -33,8 +32,7 @@ class TestCardsForm(TestBase):
             interests_avatar_form.uncheck_unselect_all()
             interests_avatar_form.select_two_random_interests(test_data.interest_selection_count)
 
-            avatar_path = AvatarLoader.get_avatar_absolute_path()
-            interests_avatar_form.upload_avatar_image(avatar_path)
+            interests_avatar_form.upload_avatar_image(test_data.avatar_name)
             assert interests_avatar_form.avatar_is_uploaded(), "Avatar is not uploaded"
 
         with allure.step("Go to more info card"):
