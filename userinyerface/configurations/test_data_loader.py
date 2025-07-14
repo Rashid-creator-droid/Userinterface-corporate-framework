@@ -3,7 +3,7 @@ from pathlib import Path
 from py_selenium_auto_core.utilities.json_settings_file import JsonSettingsFile
 from py_selenium_auto_core.utilities.root_path_helper import RootPathHelper
 
-from models.schemas import DataTest
+from userinyerface.models.schemas import DataTest
 
 
 class DataLoader:
