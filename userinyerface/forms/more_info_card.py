@@ -6,4 +6,4 @@ class MoreInfoForm(Form):
     _more_info_form_unique_xpath = "//*[@class='personal-details']"
 
     def __init__(self):
-        super().__init__(Locator.by_xpath(self._more_info_form_unique_xpath), "Card three form")
+        super().__init__(Locator.by_xpath(self._more_info_form_unique_xpath), "More info card")

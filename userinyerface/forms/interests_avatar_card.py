@@ -19,7 +19,7 @@ class InterestsAvatarForm(Form):
     _avatar_image_xpath = "//*[@class='avatar-and-interests__avatar-image']"
 
     def __init__(self):
-        super().__init__(Locator.by_xpath(self._interests_avatar_form_unique_xpath), "Card two form")
+        super().__init__(Locator.by_xpath(self._interests_avatar_form_unique_xpath), "Interests avatar card")
 
     def uncheck_unselect_all(self):
         unselect_all = self._form_element.find_child_element(

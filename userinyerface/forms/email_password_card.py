@@ -16,7 +16,7 @@ class EmailPasswordForm(Form):
     _dropdown_options_xpath = "//*[contains(@class,'dropdown__list-item') and text()='{zone_text}']"
 
     def __init__(self):
-        super().__init__(Locator.by_xpath(self._email_pass_form_unique_xpath), "Card one form")
+        super().__init__(Locator.by_xpath(self._email_pass_form_unique_xpath), "Email password card")
 
     def terms_checkbox_chek(self):
         terms_checkbox = self._form_element.find_child_element(
