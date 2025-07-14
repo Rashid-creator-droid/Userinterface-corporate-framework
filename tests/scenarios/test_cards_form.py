@@ -38,4 +38,4 @@ class TestCardsForm(TestBase):
         with allure.step("Go to more info card"):
             email_form.next_button_click()
             more_info_form = MoreInfoForm()
-            assert more_info_form.state.is_displayed(), "More info card is not open"
+            assert more_info_form.state.wait_for_displayed(), "More info card is not open"
