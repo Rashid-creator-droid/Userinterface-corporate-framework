@@ -1,5 +1,6 @@
 import logging
 import os
+import pathlib
 
 import pytest
 from _pytest.fixtures import FixtureRequest
@@ -12,7 +13,7 @@ from userinyerface.browsers.custom_startup import CustomStartup
 
 @pytest.fixture(scope="session", autouse=True)
 def setup_session(request):
-    work_dir = RootPathHelper.current_root_path(__file__)
+    work_dir = pathlib.Path(__file__).resolve().parents[2]
     os.chdir(work_dir)
     Logger.info(f'Setting work_dir: {work_dir}')
 
