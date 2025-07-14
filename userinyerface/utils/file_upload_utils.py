@@ -1,5 +1,5 @@
-import locale
 import ctypes
+import locale
 
 import allure
 from py_selenium_auto.browsers.browser_services import BrowserServices
@@ -16,7 +16,6 @@ class FileUploadDialogHandler:
         test_data = DataLoader.get_test_data()
         self.current_lang = self.get_os_language()
         self.dialog_config = test_data.os_language.get(self.current_lang)
-
 
     @staticmethod
     def get_os_language(default="ru"):

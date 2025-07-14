@@ -1,8 +1,6 @@
 import allure
 
 from tests.test_base import TestBase
-from userinyerface.forms.main_form import MainForm
-from userinyerface.forms.start_page import StartPage
 
 
 class TestHelpForm(TestBase):

@@ -1,18 +1,13 @@
 import allure
 
 from tests.test_base import TestBase
-from userinyerface.models.schemas import UserFields, DataTest
-from userinyerface.configurations.test_data_loader import DataLoader
-from userinyerface.configurations.user_data_loader import UserDataLoader, AvatarLoader
+from userinyerface.configurations.user_data_loader import AvatarLoader
 from userinyerface.forms.email_password_card import EmailPasswordForm
 from userinyerface.forms.interests_avatar_card import InterestsAvatarForm
-from userinyerface.forms.main_form import MainForm
 from userinyerface.forms.more_info_card import MoreInfoForm
-from userinyerface.forms.start_page import StartPage
 
 
 class TestCardsForm(TestBase):
-
 
     def test_card_form(self):
         with allure.step("Start registration and load data"):
