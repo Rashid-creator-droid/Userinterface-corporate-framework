@@ -1,0 +1,12 @@
+{
+  "interest_selection_count": 3,
+  "timer_start": "00:00:00",
+  "os_language": {
+    "ru": {
+      "dialog_title": "Открытие",
+      "edit": "Edit",
+      "open_button": "Открыть"
+    }
+  }
+}
+
