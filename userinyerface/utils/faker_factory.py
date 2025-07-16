@@ -49,19 +49,21 @@ class FakeUserFactory:
             password_digits: bool = True,
             password_upper_case: bool = True,
             password_lower_case: bool = True,
-            domains: List
+            domains: List,
+            latter_from_email: bool =True,
     ) -> UserFields:
         full_email = cls._faker.email()
         username = full_email.split("@")[0]
         domain = full_email.split("@")[1].split(".")[0]
         domain_zone = random.choice(domains)
+        email_for_password = full_email if latter_from_email else None
         password = cls._generate_password(
             length=password_length,
             special_chars=password_special_chars,
             digits=password_digits,
             upper_case=password_upper_case,
             lower_case=password_lower_case,
-            text=full_email,
+            text=email_for_password,
         )
 
         return UserFields(

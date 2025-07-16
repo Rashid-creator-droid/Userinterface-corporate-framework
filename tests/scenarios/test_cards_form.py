@@ -18,7 +18,13 @@ class TestCardsForm(TestBase):
 
         with allure.step("Filling out the registration form"):
             email_form.open_dropdown()
-            user_data = FakeUserFactory.create(password_length=10, domains=email_form.get_domain_zone_list())
+            user_data = FakeUserFactory.create(
+                password_length=10,
+                domains=email_form.get_domain_zone_list(),
+                latter_from_email=True,
+                password_upper_case=True,
+                password_digits=True
+            )
             email_form.input_password_field(user_data.password)
             email_form.input_email_field(user_data.email)
             email_form.input_domain_field(user_data.domain)
