@@ -1,6 +1,7 @@
+from typing import Optional, List
+
 from faker import Faker
 import random
-import string
 
 from userinyerface.models.schemas import UserFields
 
@@ -9,36 +10,59 @@ class FakeUserFactory:
     _faker = Faker()
 
     @classmethod
-    def _generate_valid_password(cls, email, length: int = 12):
-
-        latin_letters = string.ascii_letters
-        digits = string.digits
-        special_chars = string.punctuation
-
-        email_letters = [ch for ch in email if ch.isalpha()]
-        email_letter = random.choice(email_letters)
-
-        password_chars = [
-            random.choice(string.ascii_uppercase),
-            random.choice(digits),
-            email_letter,
-            random.choice(special_chars),
-        ]
-
-        all_chars = latin_letters + digits + special_chars
-        while len(password_chars) < length:
-            password_chars.append(random.choice(all_chars))
-
-        random.shuffle(password_chars)
-        return ''.join(password_chars)
+    def _generate_password(
+            cls,
+            *,
+            length,
+            special_chars,
+            digits,
+            upper_case,
+            lower_case,
+            text: Optional[str] = None,
+    ):
+        if text:
+            letters = [c for c in text if c.isalpha()]
+            if letters:
+                base = cls._faker.password(
+                    length=length - 1,
+                    special_chars=special_chars,
+                    digits=digits,
+                    upper_case=upper_case,
+                    lower_case=lower_case,
+                )
+                base += random.choice(letters)
+                return base
+        return cls._faker.password(
+            length=length,
+            special_chars=special_chars,
+            digits=digits,
+            upper_case=upper_case,
+            lower_case=lower_case,
+        )
 
     @classmethod
-    def create(cls) -> UserFields:
+    def create(
+            cls,
+            *,
+            password_length: int = 10,
+            password_special_chars: bool = True,
+            password_digits: bool = True,
+            password_upper_case: bool = True,
+            password_lower_case: bool = True,
+            domains: List
+    ) -> UserFields:
         full_email = cls._faker.email()
         username = full_email.split("@")[0]
         domain = full_email.split("@")[1].split(".")[0]
-        domain_zone = random.choice([".com", ".net", ".org", ".de"])
-        password = cls._generate_valid_password(full_email)
+        domain_zone = random.choice(domains)
+        password = cls._generate_password(
+            length=password_length,
+            special_chars=password_special_chars,
+            digits=password_digits,
+            upper_case=password_upper_case,
+            lower_case=password_lower_case,
+            text=full_email,
+        )
 
         return UserFields(
             email=username,

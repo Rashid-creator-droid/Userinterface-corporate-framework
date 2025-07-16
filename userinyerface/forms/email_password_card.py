@@ -13,6 +13,7 @@ class EmailPasswordForm(Form):
     _domain_box_xpath = "//input[@placeholder='Domain']"
     _next_button_xpath = "//*[text()='Next']"
     _dropdown_opener_xpath = "//*[contains(@class, 'dropdown__opener')]"
+    _dropdown_list_xpath = "//*[@class='dropdown__list-item']"
     _dropdown_options_xpath = "//*[contains(@class,'dropdown__list-item') and text()='{zone_text}']"
 
     def __init__(self):
@@ -60,7 +61,7 @@ class EmailPasswordForm(Form):
             "Next button"
         ).click()
 
-    def select_domain_zone(self, zone_text: str):
+    def open_dropdown(self):
         dropdown_opener = self._form_element.find_child_element(
             Button,
             Locator.by_xpath(self._dropdown_opener_xpath),
@@ -68,9 +69,18 @@ class EmailPasswordForm(Form):
         )
         dropdown_opener.click()
 
+    def select_domain_zone(self, zone_text: str):
         option = self._form_element.find_child_element(
             Button,
             Locator.by_xpath(self._dropdown_options_xpath.format(zone_text=zone_text)),
             f"Dropdown option {zone_text}"
         )
         option.click()
+
+    def get_domain_zone_list(self):
+        domains = self._form_element.find_child_elements(
+            TextBox,
+            Locator.by_xpath(self._dropdown_list_xpath),
+            "Domains list"
+        )
+        return [element.get_text() for element in domains]
