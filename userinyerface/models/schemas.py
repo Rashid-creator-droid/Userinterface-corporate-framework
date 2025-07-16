@@ -1,4 +1,3 @@
-from datetime import time
 from typing import Dict
 
 from pydantic import BaseModel
@@ -19,7 +18,5 @@ class LanguageDialogConfig(BaseModel):
 
 class DataTest(BaseModel):
     interest_selection_count: int
-    timer_start: time
     os_language: Dict[str, LanguageDialogConfig]
     avatar_name: str
-

@@ -1,7 +1,7 @@
+import random
 from typing import Optional, List
 
 from faker import Faker
-import random
 
 from userinyerface.models.schemas import UserFields
 
